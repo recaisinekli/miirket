@@ -19,20 +19,20 @@ class connectorTop : public QObject
 Q_OBJECT
 
 public slots:
-        void startTransfer();
-        void startReadFromRemote();
-        void tryToConnectToServer();
+	void startTransfer();
+	void startReadFromRemote();
+	void tryToConnectToServer();
 	void disconnectedFromServer();
 	void deleteConnectorInner();
 	void sslErrors(const QList<QSslError> &errors);
-        void socketEncrypted();
+	void socketEncrypted();
 	void heartbeat();
 
 public:
-        QTimer *timer1;
+	QTimer *timer1;
 	QTimer *heartbeatTimer;
-        QSslSocket *client;
-        JsonObject clientinfo;
+	QSslSocket *client;
+	JsonObject clientinfo;
 	QList<connectorInner *> connectorInnerList;
 };
 
