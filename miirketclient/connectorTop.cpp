@@ -95,8 +95,8 @@ void connectorTop::deleteConnectorInner(){
 void connectorTop::sslErrors(const QList<QSslError> &errors)
 {
 	qDebug()<<"ERROR";
-    foreach (const QSslError &error, errors)
-    	qDebug() << error.errorString();
+    	foreach (const QSslError &error, errors)
+    		qDebug() << error.errorString();
 }
 
 void connectorTop::socketEncrypted(){
