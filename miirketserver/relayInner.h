@@ -24,11 +24,11 @@ public slots:
 	void disconnectedFromSshClient();
 
 public:
-    QTcpSocket *sshServer;
-    QTcpSocket *sshClient;
-    relayInner(QTcpSocket *);
+    	QTcpSocket *sshServer;
+    	QTcpSocket *sshClient;
+    	relayInner(QTcpSocket *);
 	~relayInner();
-    void incomingChannel(QTcpSocket *);
+    	void incomingChannel(QTcpSocket *);
 	char *remotebuffer;
 	int storedBytes;
 };
