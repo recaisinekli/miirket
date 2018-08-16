@@ -36,7 +36,7 @@ void connectorInner::startReadFromRemote(){
 	if(!this->localConnected){
 		this->localConnected = true;
 		this->localClient->connectToHost(QHostAddress::LocalHost, this->clientinfo["localport"].toInt());
-    }
+    	}
 
 	QTcpSocket *tcpclient = qobject_cast<QTcpSocket *>(sender());
 	this->sshClient = tcpclient;
