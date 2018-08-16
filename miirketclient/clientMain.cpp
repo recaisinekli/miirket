@@ -33,15 +33,15 @@ clientMain::clientMain(){
 		connector1->clientinfo["authtoken"] = clientinfos["authtoken"];
 
 		connect(connector1->client, SIGNAL(connected()), connector1, SLOT(startTransfer()));
-        connect(connector1->client, SIGNAL(readyRead()), connector1, SLOT(startReadFromRemote()));
+        	connect(connector1->client, SIGNAL(readyRead()), connector1, SLOT(startReadFromRemote()));
 		connect(connector1->client, SIGNAL(disconnected()), connector1, SLOT(disconnectedFromServer()));
 		connect(connector1->client, SIGNAL(encrypted()), connector1, SLOT(socketEncrypted()));
-        connect(connector1->client, SIGNAL(sslErrors(QList<QSslError>)), connector1, SLOT(sslErrors(QList<QSslError>)));
+        	connect(connector1->client, SIGNAL(sslErrors(QList<QSslError>)), connector1, SLOT(sslErrors(QList<QSslError>)));
 
 		connector1->tryToConnectToServer();
-        connector1->timer1 = new QTimer();
-        connect(connector1->timer1, SIGNAL(timeout()), connector1, SLOT(tryToConnectToServer()));
-        connector1->timer1->start(5000);
+        	connector1->timer1 = new QTimer();
+        	connect(connector1->timer1, SIGNAL(timeout()), connector1, SLOT(tryToConnectToServer()));
+        	connector1->timer1->start(5000);
 	}
 }
 
