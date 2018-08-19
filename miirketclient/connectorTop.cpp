@@ -49,7 +49,7 @@ void connectorTop::startReadFromRemote(){
 		qDebug()<<"YOUR PORT CONFIGURATION IS NOT CORRECT FOR "<<remoteinfo["port"].toString()<<". PLEASE CHECK YOUR ACCOUNT ON miirket.com";
 	}
 	else if(remoteinfo["command"].toString()=="portinuse"){
-		qDebug()<<"PORT "<< remoteinfo["port"].toString()<< " IS IN USE. PLEASE KILL THE CLIENT USING THIS PORT FIRST.";
+		qDebug()<<"PORT "<< remoteinfo["port"].toString()<< " IS IN USE. PLEASE KILL THE CLIENT USING THIS PORT";
 	}
 
 	if(remoteinfo["accounttype"].toString()=="0"){
