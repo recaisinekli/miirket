@@ -9,7 +9,7 @@ connectorInner::connectorInner(){
 	client = new QSslSocket();
 	localConnected = false;
 
-	connect(this->client, SIGNAL(connected()), this, SLOT(startTransfer()));
+	connect(this->client, SIGNAL(encrypted()), this, SLOT(startTransfer()));
 	connect(this->client, SIGNAL(readyRead()), this, SLOT(startReadFromRemote()));
 	connect(this->client, SIGNAL(disconnected()), this, SLOT(disconnectedFromRemote()));
 
@@ -33,14 +33,16 @@ void connectorInner::startTransfer(){
 }
 
 void connectorInner::startReadFromRemote(){
+	QTcpSocket *tcpclient = qobject_cast<QTcpSocket *>(sender());
+	this->sshClient = tcpclient;
+	
 	if(!this->localConnected){
 		this->localConnected = true;
 		this->localClient->connectToHost(QHostAddress::LocalHost, this->clientinfo["localport"].toInt());
     	}
-
-	QTcpSocket *tcpclient = qobject_cast<QTcpSocket *>(sender());
-	this->sshClient = tcpclient;
-	this->localClient->write(tcpclient->readAll());
+	if(this->localClient->waitForConnected()){
+		this->localClient->write(tcpclient->readAll());
+	}
 }
 
 void connectorInner::startReadFromLocal(){
