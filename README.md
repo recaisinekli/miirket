@@ -4,7 +4,7 @@
 Miirket is an open source highly gifted socket. It creates a secure tunnel to let you access your Raspberry Pi and other linux devices over SSH without the need of IP address and port forwarding.
 
 # Why do I need miirket?
-You may have distributed linux devices. You may be using devices like Raspberry Pi, Orange Pi for various IOT applications. Miirket enables you to have SSH access to these devices and simplfy your management in an easy way. Moreover, you do not have to deal with static IP and port forwarding for this purpose.
+You may have distributed linux devices. You may be using devices like Raspberry Pi, Orange Pi for various IOT applications. Miirket enables you to have SSH access to these devices and simplify your management in an easy way. Moreover, you do not have to deal with static IP and port forwarding for this purpose.
 
 # How it works?
 
