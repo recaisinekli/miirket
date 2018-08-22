@@ -21,7 +21,6 @@ void relayTop::acceptConnectionFromSshClient(){
 }
 
 void relayTop::disconnectedFromRegisteredSshServer(){
-	emit disconnectedFromServer(this->userEmail, this->accountType, this->port);
 	if(this->sshRelay!=NULL) this->sshRelay->close();
         if(this->sshRelay!=NULL) this->sshRelay->deleteLater();
 	if(this->sshServer!=NULL) this->sshServer->deleteLater();

@@ -25,11 +25,10 @@ public slots:
 	void acceptConnectionFromUnknownSshServer();
 	void startReadFromUnknownSshServer();
 	void requestNewChannel();
-	void disconnectedFromRegisteredSshServer(QString, int, int);
 
 public:
 	serverMain();
-        ~serverMain();
+    ~serverMain();
 	void bindNewChannelToWaitingRelay(QTcpSocket *);
 	relayTop *waitingRelay;
 

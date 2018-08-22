@@ -30,12 +30,9 @@ public:
 	QTcpSocket *sshServer;
     int port;
     relayInner *waitingInnerRelay;
-	QString userEmail;
-	int accountType;
 
 signals:
 	void requestNewChannel();
-	void disconnectedFromServer(QString, int, int);
 };
 
 #endif //RELAY_H
