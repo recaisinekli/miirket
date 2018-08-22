@@ -35,36 +35,6 @@ void connectorTop::startReadFromRemote(){
 		newConnectorInner->tryToConnect();
 	}
 
-
-	else if(remoteinfo["command"].toString()=="authtokennotfound"){
-		qDebug()<<"AUTHTOKEN NOT FOUND";
-	}
-	else if(remoteinfo["command"].toString()=="accountnotverified"){
-		qDebug()<<"YOUR ACCOUNT IS NOT VERIFIED";
-	}
-	else if(remoteinfo["command"].toString()=="only1portallowed"){
-		qDebug()<<"FREE ACCOUNTS CAN'T HAVE MULTIPLE PORTS";
-	}
-	else if(remoteinfo["command"].toString()=="wrongremoteport"){
-		qDebug()<<"YOUR PORT CONFIGURATION IS NOT CORRECT FOR "<<remoteinfo["port"].toString()<<". PLEASE CHECK YOUR ACCOUNT ON miirket.com";
-	}
-	else if(remoteinfo["command"].toString()=="portinuse"){
-		qDebug()<<"PORT "<< remoteinfo["port"].toString()<< " IS IN USE. PLEASE KILL THE CLIENT USING THIS PORT";
-	}
-
-	if(remoteinfo["accounttype"].toString()=="0"){
-		qDebug()<<"YOU GOT A FREE ACCOUNT";
-		qDebug()<<"YOUR REMOTE PORT IS ASSIGNED RANDOMLY :"<<remoteinfo["port"].toInt();
-	}
-	else if(remoteinfo["accounttype"].toString()=="1"){
-		qDebug()<<"YOU GOT A BASIC ACCOUNT";
-		qDebug()<<"YOUR REMOTE PORT IS STATIC : "<<remoteinfo["port"].toInt();
-	}
-	else if(remoteinfo["accounttype"].toString()=="2"){
-		qDebug()<<"YOU GOT A PRO ACCOUNT";
-		qDebug()<<"YOUR REMOTE PORT IS STATIC : "<<remoteinfo["port"].toInt();
-	}
-
 }
 
 void connectorTop::tryToConnectToServer(){
