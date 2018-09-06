@@ -1,8 +1,3 @@
-/*
- * Author - Recai Sinekli 2018
- * recai@sinekyazilim.com.tr
- */
-
 #ifndef CLIENTMAIN_H
 #define CLIENTMAIN_H
 #include <QDebug>
@@ -11,6 +6,7 @@
 #include <QSslSocket>
 #include "json.h"
 #include "connectorTop.h"
+#include "httpConnector.h"
 
 using QtJson::JsonObject;
 using QtJson::JsonArray;
@@ -23,7 +19,7 @@ public slots:
 
 public:
 	clientMain();
-	~clientMain();
+        ~clientMain();
 	QString readConfigFile(const QString &);
 	JsonObject clientinfos;
 };
