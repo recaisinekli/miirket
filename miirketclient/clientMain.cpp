@@ -39,7 +39,7 @@ clientMain::clientMain(){
                 	connect(connector1->timer1, SIGNAL(timeout()), connector1, SLOT(tryToConnectToServer()));
                 	connector1->timer1->start(5000);
 		}
-		if(binding["type"].toString()=="http"){
+		else if(binding["type"].toString()=="http"){
 			httpConnector *h1 = new httpConnector();
         		h1->httpClient = new QSslSocket();
 			h1->clientinfo["localport"] = binding["local"];
@@ -54,6 +54,21 @@ clientMain::clientMain(){
                         connect(h1->timer1, SIGNAL(timeout()), h1, SLOT(tryToConnect()));
                         h1->timer1->start(5000);
 		}
+		else if(binding["type"].toString()=="https"){
+                        httpConnector *h1 = new httpConnector();
+                        h1->httpClient = new QSslSocket();
+                        h1->clientinfo["localport"] = binding["local"];
+                        h1->clientinfo["subdomain"] = binding["subdomain"];
+                        h1->clientinfo["server_address"] = clientinfos["server_address"];
+                        h1->clientinfo["server_port"] = clientinfos["server_https_port"];
+                        connect(h1->httpClient, SIGNAL(encrypted()), h1, SLOT(startTransfer()));
+                        connect(h1->httpClient, SIGNAL(readyRead()), h1, SLOT(startReadFromRemote()));
+                        connect(h1->httpClient, SIGNAL(disconnected()), h1, SLOT(disconnectedFromServer()));
+                        h1->tryToConnect();
+                        h1->timer1 = new QTimer();
+                        connect(h1->timer1, SIGNAL(timeout()), h1, SLOT(tryToConnect()));
+                        h1->timer1->start(5000);
+                }
 	}
 }
 

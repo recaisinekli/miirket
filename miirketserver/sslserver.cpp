@@ -28,9 +28,9 @@ void SslServer::incomingConnection(int socketDescriptor)
 	sslSocket->setSocketDescriptor(socketDescriptor);
 	sslSocket->setPrivateKey(key);
 	sslSocket->setLocalCertificate(cert);
-	sslSocket->addCaCertificates("/path/to/ServerCA.crt");
-	sslSocket->addCaCertificates("/path/to/RSAAddrust.crt");
-	sslSocket->addCaCertificates("/path/to/CARoot.crt");
+	// add certificate chain
+	sslSocket->addCaCertificates("/path/to/intermediateCA.crt");
+	sslSocket->addCaCertificates("/path/to/rootCA.crt");
 	sslSocket->startServerEncryption();
 
 	addPendingConnection(sslSocket);

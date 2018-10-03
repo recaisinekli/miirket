@@ -30,7 +30,10 @@ void httpConnector::startReadFromRemote(){
         JsonObject remoteinfo = QtJson::parse(remotedata, ok).toMap();
 
         if(remoteinfo["command"].toString()=="registered"){
-		qDebug()<<"REGISTERED TO THE SERVER WITH SUBDOMAIN "<< this->clientinfo["subdomain"].toString();
+		if(remoteinfo["type"].toString()=="http")
+			qDebug()<<"REGISTERED TO THE SERVER WITH SUBDOMAIN "<< "http://"+this->clientinfo["subdomain"].toString()+".miirket.com:9999";
+		else
+			qDebug()<<"REGISTERED TO THE SERVER WITH SUBDOMAIN "<< "https://"+this->clientinfo["subdomain"].toString()+".miirket.com:8888";;
 	}
 	else if(remoteinfo["command"].toString()=="subdomaintaken"){
 		qDebug()<<"SUBDOMAIN "<< this->clientinfo["subdomain"].toString()<<" IS ALREADY TAKEN. TRY ANOTHER ONE.";
